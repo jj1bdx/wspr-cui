@@ -22,8 +22,8 @@ all:    wsprd wsprsim
 
 DEPS =  wsprsim_utils.h wsprd_utils.h fano.h jelinek.h nhash.h
 
-indexx.o: ../indexx.f90
-	${FC} -o indexx.o ${FFLAGS} -c ../indexx.f90 
+indexx.o: ./indexx.f90
+	${FC} -o indexx.o ${FFLAGS} -c ./indexx.f90 
 
 OBJS1 = wsprd.o wsprsim_utils.o wsprd_utils.o tab.o fano.o jelinek.o nhash.o indexx.o osdwspr.o
 
