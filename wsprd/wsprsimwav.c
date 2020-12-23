@@ -71,6 +71,10 @@ char* tobinary(int x)
     return b;
 }
 
+// See
+// https://stackoverflow.com/questions/23030980/creating-a-stereo-wav-file-using-c
+// https://docs.fileformat.com/audio/wav/
+
 typedef struct wavfile_header_s
 {
     char    ChunkID[4];     /*  4   */
