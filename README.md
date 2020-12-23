@@ -3,6 +3,13 @@
 * Based on wsprd and wsprcode source taken from WSJT-X 2.3.0-rc2
 * wsprsimwav derived from wsprsim
 
+## How to build
+
+```
+cd wsprd
+make clean && make
+```
+
 ## Tips
 
 ### For generating wav file
@@ -42,3 +49,6 @@ tail -c +27 201223_0000.c2 |
 * Each transmission contains 162 symbols for 110.592 seconds
 * Each transmission starts +1 second after even UTC minute (e.g., 00:01, 02:01)
 
+### LICENSE
+
+GPLv3
