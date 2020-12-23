@@ -278,7 +278,7 @@ int get_wspr_channel_symbols(char *rawmessage, char *hashtab, char *loctab,
   data[10] = 0;
 
   if (printdata) {
-    printf("Data is :");
+    printf("Data is: ");
     for (i = 0; i < 11; i++) {
       printf("%02X ", data[i]);
     }
