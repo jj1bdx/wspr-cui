@@ -216,13 +216,13 @@ int main(int argc, char *argv[]) {
     printf("\n");
   }
 
-  // add signal
-  sig = malloc(sizeof(double) * SYMSIZE);
-  memset(sig, 0, sizeof(double) * SYMSIZE);
-
-  add_signal_vector(f0, pow(10.0, adb / 20.0), channel_symbols, sig);
-
   if (writewav) {
+    // add signal
+    sig = malloc(sizeof(double) * SYMSIZE);
+    memset(sig, 0, sizeof(double) * SYMSIZE);
+
+    add_signal_vector(f0, pow(10.0, adb / 20.0), channel_symbols, sig);
+
     printf("Writing %s\n", wavfilename);
     writewavfile(wavfilename, sig);
   }
