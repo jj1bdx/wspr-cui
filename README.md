@@ -1,8 +1,13 @@
 # WSPR CUI code
 
-Taken from WSJT-X 2.3.0-rc2
+* Based on wsprd and wsprcode source taken from WSJT-X 2.3.0-rc2
+* wsprsimwav derived from wsprsim
 
 ## Tips
+
+### For generating wav file
+
+* Use wsprsimwav for generating a 48kHz mono WAV file, directly usable for transmission over USB transmitter
 
 ### For generating .c2 file
 
