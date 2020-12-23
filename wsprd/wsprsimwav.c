@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include <getopt.h>
 
 #include "fano.h"
 #include "wsprd_utils.h"
@@ -17,7 +19,9 @@
 int printdata = 0;
 
 void usage() {
-  printf("Usage: wsprsim [options] message\n");
+  printf("wsprsimwav: generate 48kHz S16_LE mono WAV file\n");
+  printf("\n");
+  printf("Usage: wsprsimwav [options] message\n");
   printf("       message format:   \"K1ABC FN42 33\"\n");
   printf("                         \"PJ4/K1ABC 33\"\n");
   printf("                         \"<PJ4/K1ABC> FK52UD 33\"\n");
@@ -28,7 +32,7 @@ void usage() {
   printf("       -f x (-100 Hz < f < 100 Hz, center: 1500 Hz)\n");
   printf("       -o filename (write a wav file with this name)\n");
   printf("\n");
-  printf(" e.g. ./wsprsim -a -6 -cd -o k1abc.wav \"K1ABC FN42 33\"\n");
+  printf(" e.g. ./wsprsimwav -a -6 -cd -o k1abc.wav \"K1ABC FN42 33\"\n");
 }
 
 #define SRATE (48000.0) // sampling rate = 48000 Hz
@@ -177,7 +181,7 @@ int main(int argc, char *argv[]) {
 
   strcpy(wavfilename, "wsprsimwav.wav");
 
-  while ((c = getopt(argc, argv, "-a:cdf:o:")) != -1) {
+  while ((c = getopt(argc, argv, "a:cdf:o:")) != -1) {
     switch (c) {
     case 'a':
       adb = atof(optarg);
