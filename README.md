@@ -24,3 +24,16 @@ tail -c +27 201223_0000.c2 |
     csdr gain_ff 16 | csdr shift_math_cc 0.125 | 
     play --buffer=1024 -t raw -e floating-point -b32 -r 12000 -c 2 -q -
 ```
+
+### WSPR-2 timing and frequency
+
+* The channel symbol output corresponds to lowest to highest frequencies, from 0 to 3, with 1.46484375 (= 12000/8192) Hz frequency shift, respectively.
+* The channel spacing diagram from the center frequency:
+  - Symbol 0: -2.197265625 Hz ( = -18000/8192 Hz)
+  - Symbol 1: -0.732421875 Hz ( = -6000/8192 Hz)
+  - Symbol 2: +0.732421875 Hz ( = +6000/8192 Hz)
+  - Symbol 3: +2.197265625 Hz ( = +18000/8192 Hz)
+* Transmission rate: 1.46484375 baud = 0.682666667 second/symbol = 8192/12000 second
+* Each transmission contains 162 symbols for 110.592 seconds
+* Each transmission starts +1 second after even UTC minute (e.g., 00:01, 02:01)
+
