@@ -19,7 +19,7 @@ LIBS = -lfftw3f -lm -lgfortran
 %.o: %.F90
 	${FC} ${FFLAGS} -c $<
 
-all:    wsprd wsprsim wsprsimwav
+all:    wsprd wsprsim wsprsimwav wsprcode
 
 DEPS =  wsprsim_utils.h wsprd_utils.h fano.h jelinek.h nhash.h
 
@@ -41,5 +41,10 @@ OBJS3 = wsprsimwav.o wsprsim_utils.o wsprd_utils.o tab.o fano.o nhash.o
 wsprsimwav: $(OBJS3)
 	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS) $(LIBS)
 
+OBJS4 = wsprcode_s.o nhash_s.o
+
+wsprcode: $(OBJS4)
+	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS) $(LIBS)
+
 clean:
-	$(RM) *.o wsprd wsprsim wsprsimwav
+	$(RM) *.o wsprd wsprsim wsprsimwav wsprcode
