@@ -246,7 +246,9 @@ uint32_t nhash_(const void *key, int *length0, uint32_t *initval0)
     const uint32_t *k = (const uint32_t *)key; /* read 32-bit chunks */
     const uint8_t *k8;
 
-    k8 = 0; // Silence compiler warning
+    // Silence compiler warning
+    k8 = 0;
+    k8++; k8--;
     /*------ all but last block: aligned reads and affect 32 bits of (a,b,c) */
     while (length > 12) {
       a += k[0];

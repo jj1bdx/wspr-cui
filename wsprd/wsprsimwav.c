@@ -40,11 +40,10 @@ void usage() {
 void add_signal_vector(double f0, double amp, unsigned char *symbols,
                        double sig[]) {
   int i, j, ii, idelay;
-  double phi = 0.0, twopidt, df, dt, dphi;
+  double phi = 0.0, twopidt, df, dphi;
 
   twopidt = 8.0 * atan(1.0) / SRATE; // 2 * PI / SRATE
   df = SRATE / TRATE;
-  dt = 1 / SRATE;
   idelay = SRATE; // 1.0 second delay
 
   for (i = 0; i < NSYM; i++) {

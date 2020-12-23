@@ -31,7 +31,7 @@ program test_wspr
 !1002 format('Source-encoded message (50 bits, hex):',7z3.2)
 !     data0(8:11)=0
 
-     call wqdecode(data0,msg2,ntype1)         
+     call wqdecode(data0,msg2,ntype1)
 
 !  write(*,1020) ntype1
 !1020 format('Message type: ',i7)

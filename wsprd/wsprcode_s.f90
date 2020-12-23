@@ -147,7 +147,7 @@ program wsprcode
 
 ! Call the sequential (Fano algorithm) decoder
   call fano232(softsym,nbits,mettab,ndelta,limit,data1,ncycles,metric,nerr)
-  call wqdecode(data1,msg2,ntype1)         
+  call wqdecode(data1,msg2,ntype1)
 
   write(*,1020) msg2,ntype1
 1020 format(/'Decoded message: ',a22,'   ntype:',i3)
@@ -155,4 +155,4 @@ program wsprcode
 999 end program wsprcode
 
 include 'wspr_old_subs.f90'
-  
+
