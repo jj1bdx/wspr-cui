@@ -12,9 +12,29 @@ make clean && make
 
 ## Tips
 
+Note: tips for only WSPR-2 minute protocol are described unless otherwise noted
+
 ### For generating wav file
 
 * Use wsprsimwav for generating a 48kHz mono WAV file, directly usable for transmission over USB transmitter
+
+### For reading wav file by wsprd
+
+* WAV header (first 22 bytes) are ignored
+* Format: fixed to S16\_LE, 12000Hz, monaural (1 channel)
+* Length: 114 seconds (see `readwavfile()` in wsprd.c) 
+
+### .c2 file format by wsprd
+
+* Length per file: 360026 bytes
+* Header: 26 bytes
+  -  Filename: first 14 bytes as char
+  - WSPR type: next 4 bytes as int (2 for WSPR-2, 15 for WSPR-15)
+  - Frequency: next 8 bytes as double in MHz
+* Interleaved IQ signal
+  - Strictly 45000 frames for 120 seconds of 375 frames/second
+  - each frame has two float numbers (4 x 2 = 8 bytes / frame)
+  - frame data: I, and -Q (negated Q)
 
 ### For generating .c2 file
 
