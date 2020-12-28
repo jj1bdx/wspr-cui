@@ -248,7 +248,8 @@ uint32_t nhash_(const void *key, int *length0, uint32_t *initval0)
 
     // Silence compiler warning
     k8 = 0;
-    k8++; k8--;
+    k8++;
+    k8--;
     /*------ all but last block: aligned reads and affect 32 bits of (a,b,c) */
     while (length > 12) {
       a += k[0];

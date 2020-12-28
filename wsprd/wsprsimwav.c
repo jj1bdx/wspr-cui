@@ -4,13 +4,13 @@
 //  Modified from: wsprsim.c
 //
 
+#include <getopt.h>
 #include <math.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <getopt.h>
 
 #include "fano.h"
 #include "wsprd_utils.h"
@@ -35,11 +35,11 @@ void usage() {
   printf(" e.g. ./wsprsimwav -a -6 -cd -o k1abc.wav \"K1ABC FN42 33\"\n");
 }
 
-#define SRATE (48000.0) // sampling rate = 48000 Hz
-#define TRATE (32768.0) // symbol length by samples
-#define NSYM (162) // number of symbols for each transmission
+#define SRATE (48000.0)   // sampling rate = 48000 Hz
+#define TRATE (32768.0)   // symbol length by samples
+#define NSYM (162)        // number of symbols for each transmission
 #define SYMSIZE (5376000) // 112 seconds for 48000 samples/second
-#define FOFFSET (1500.0) // center frequency for audio signal
+#define FOFFSET (1500.0)  // center frequency for audio signal
 
 void add_signal_vector(double f0, double amp, unsigned char *symbols,
                        double sig[]) {

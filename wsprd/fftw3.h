@@ -348,9 +348,9 @@ FFTW_DEFINE_API(FFTW_MANGLE_QUAD, __float128, fftwq_complex)
 #define FFTW_DESTROY_INPUT (1U << 0)
 #define FFTW_UNALIGNED (1U << 1)
 #define FFTW_CONSERVE_MEMORY (1U << 2)
-#define FFTW_EXHAUSTIVE (1U << 3) /* NO_EXHAUSTIVE is default */
+#define FFTW_EXHAUSTIVE (1U << 3)     /* NO_EXHAUSTIVE is default */
 #define FFTW_PRESERVE_INPUT (1U << 4) /* cancels FFTW_DESTROY_INPUT */
-#define FFTW_PATIENT (1U << 5) /* IMPATIENT is default */
+#define FFTW_PATIENT (1U << 5)        /* IMPATIENT is default */
 #define FFTW_ESTIMATE (1U << 6)
 #define FFTW_WISDOM_ONLY (1U << 21)
 
