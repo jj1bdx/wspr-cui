@@ -10,6 +10,13 @@ cd wsprd
 make clean && make
 ```
 
+## Code formatting
+
+* [clang-format](https://clang.llvm.org/docs/ClangFormatStyleOptions.html) for C code
+* [fprettify](https://github.com/pseewald/fprettify) for Fortran code
+
+Use `make format` to format the code.
+
 ## Tips
 
 Note: tips for only WSPR-2 minute protocol are described unless otherwise noted
