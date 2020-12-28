@@ -48,3 +48,7 @@ wsprcode: $(OBJS4)
 
 clean:
 	$(RM) *.o wsprd wsprsim wsprsimwav wsprcode
+
+format: .clang-format
+	clang-format -style=file -i *.c *.h
+	fprettify -w 4 *.f90
