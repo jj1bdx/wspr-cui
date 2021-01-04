@@ -2,6 +2,7 @@
 
 * Based on wsprd and wsprcode source taken from WSJT-X 2.3.0-rc2
 * wsprsimwav derived from wsprsim
+* Code of CUI interface for WSPR TX/RX is at `wspr-trx/`
 
 ## How to build
 
