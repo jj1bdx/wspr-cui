@@ -7,8 +7,9 @@ import subprocess
 import random
 import serial
 
-# probability of transmission in percent
-txpercent = 20
+# probability of transmission in percent times 2
+# (40 for 20% probability)
+txpercent = 40
 # PTT control port (FT-891 with SCU-17 here, assert RTS)
 pttport = "SCU_17_PTT_PORT(if01)"
 # Remembering transmission state of txrxjob()
