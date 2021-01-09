@@ -10,9 +10,9 @@ import signal
 import sys
 import time
 
-# probability of transmission in percent times 2
-# (40 for 20% probability)
-txpercent = 40
+# probability of transmission in percent
+# (50% maximum)
+txpercent = 20
 # Remembering transmission state of txrxjob()
 lasttx = False
 
