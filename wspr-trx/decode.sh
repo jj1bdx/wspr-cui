@@ -8,7 +8,12 @@
 
 BASE=/home/kenji/wspr-trx
 BASEWAV=${BASE}/wav
-FREQMHZ="FREQUENCY_in_megahertz"
+
+# Obtain VFO frequency from the TRX every time
+FREQHZ=`rigctl -m 1036 -r /dev/serial/by-id/usb-Silicon_Labs_CP2105_Dual_USB_to_UART_Bridge_Controller_00CED32F-if00-port0 -P RIG -s 38400 f`
+FREQMHZ=`calc -p ${FREQHZ}/1000000`
+echo "FREQMHZ=${FREQMHZ}"
+
 MYCALL="YOUR_CALLSIGN"
 MYGRID="YOUR_GRID_LOCATOR"
 
