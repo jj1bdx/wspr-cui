@@ -69,7 +69,7 @@ unsigned long readc2file(char *ptr_to_infile, float *idat, float *qdat,
   float *buffer;
   double dfreq;
   int i, ntrmin;
-  char *c2file[15];
+  char c2file[15];
   size_t nr;
   FILE *fp;
 
@@ -786,7 +786,7 @@ int main(int argc, char *argv[]) {
   signed char message[] = {-9, 13, -35, 123, 57, -39, 64, 0, 0, 0, 0};
   char *callsign, *grid, *call_loc_pow;
   char *ptr_to_infile, *ptr_to_infile_suffix;
-  char *data_dir = NULL;
+  char *data_dir = ".";
   char wisdom_fname[200], all_fname[200], spots_fname[200];
   char timer_fname[200], hash_fname[200];
   char uttime[5], date[7];
@@ -945,8 +945,10 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  if (stackdecoder) {
-    stack = calloc(stacksize, sizeof(struct snode));
+  if (access(data_dir, R_OK | W_OK)) {
+    fprintf(stderr, "Error: inaccessible data directory: '%s'\n", data_dir);
+    usage();
+    return EXIT_FAILURE;
   }
 
   if (optind + 1 > argc) {
@@ -954,6 +956,10 @@ int main(int argc, char *argv[]) {
     return 1;
   } else {
     ptr_to_infile = argv[optind];
+  }
+
+  if (stackdecoder) {
+    stack = calloc(stacksize, sizeof(struct snode));
   }
 
   // setup metric table
@@ -969,11 +975,11 @@ int main(int argc, char *argv[]) {
   strcpy(timer_fname, ".");
   strcpy(hash_fname, ".");
   if (data_dir != NULL) {
-    strcpy(wisdom_fname, data_dir);
-    strcpy(all_fname, data_dir);
-    strcpy(spots_fname, data_dir);
-    strcpy(timer_fname, data_dir);
-    strcpy(hash_fname, data_dir);
+    strncpy(wisdom_fname, data_dir, sizeof wisdom_fname);
+    strncpy(all_fname, data_dir, sizeof all_fname);
+    strncpy(spots_fname, data_dir, sizeof spots_fname);
+    strncpy(timer_fname, data_dir, sizeof timer_fname);
+    strncpy(hash_fname, data_dir, sizeof hash_fname);
   }
   strncat(wisdom_fname, "/wspr_wisdom.dat", 20);
   strncat(all_fname, "/ALL_WSPR.TXT", 20);
