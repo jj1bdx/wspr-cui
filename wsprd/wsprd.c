@@ -723,6 +723,7 @@ unsigned long writec2file(char *c2filename, int trmin, double freq, float *idat,
   }
   nwrite = fwrite(buffer, sizeof(float), 2 * 45000, fp);
   free(buffer);
+  fclose(fp);
   if (nwrite == 2 * 45000) {
     return nwrite;
   } else {
