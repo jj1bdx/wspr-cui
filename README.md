@@ -4,6 +4,13 @@
 * wsprsimwav derived from wsprsim
 * Code of CUI interface for WSPR TX/RX is at `wspr-trx/`
 
+## Requirements
+
+* Linux or macOS
+* GNU Fortran for compiling WSJT-X code
+  - See the latest WSJT-X source code from [WSJT-X Web Page](https://physics.princeton.edu/pulsar/k1jt/wsjtx.html) for how to build the code in details
+* [Advanced Python Scheduler](https://apscheduler.readthedocs.io/en/3.x/)
+
 ## How to build
 
 ```
@@ -77,6 +84,6 @@ tail -c +27 201223_0000.c2 |
 * Each transmission contains 162 symbols for 110.592 seconds
 * Each transmission starts +1 second after even UTC minute (e.g., 00:01, 02:01)
 
-### LICENSE
+## LICENSE
 
 GPLv3
