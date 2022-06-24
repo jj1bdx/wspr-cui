@@ -194,7 +194,7 @@ int get_wspr_channel_symbols(char *rawmessage, char *hashtab, char *loctab,
   // Use the presence and/or absence of "<" and "/" to decide what
   // type of message. No sanity checks! Beware!
 
-  if (i1 > 3 && i1 < 7 && i2 == mlen && i3 == mlen) {
+  if (i1 >= 3 && i1 < 7 && i2 == mlen && i3 == mlen) {
     // Type 1 message: K9AN EN50 33
     //                 xxnxxxx xxnn nn
     callsign = strtok(message, " ");
