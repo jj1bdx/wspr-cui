@@ -16,6 +16,7 @@ echo "FREQMHZ=${FREQMHZ}"
 
 MYCALL="YOUR_CALLSIGN"
 MYGRID="YOUR_GRID_LOCATOR"
+MYVERSION="wspr-cui"
 
 cd ${BASE}
 
@@ -37,6 +38,7 @@ if [ $FILESIZE -ne 0 ] ; then
     curl -s -S \
         -F allmept=@${BASE}/wsprdsum.out \
 	-F call=${MYCALL} -F grid=${MYGRID} \
+	-F version=${MYVERSION} \
 	--connect-timeout 5 --max-time 8 \
 	http://wsprnet.org/meptspots.php > /dev/null;
     RESULT=$?
