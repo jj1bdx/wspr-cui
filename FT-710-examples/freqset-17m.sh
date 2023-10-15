@@ -1,7 +1,7 @@
 #!/bin/sh
 cd /home/kenji/wspr-trx
 # FT-710
-#  set frequency to 28.1246MHz
+#  set frequency to 18.1046MHz
 #  set mode to DATA-U
 #  (not required: set HF MAX output power to 5W / send_raw ; EX030401005;)
 #  set actual output power to 5W / send_raw ; PC005;
@@ -9,7 +9,7 @@ cd /home/kenji/wspr-trx
 #  Activate auto tuner / send_raw ; AC003;
 # then check the status including PTT
 rigctl -m 1049 -r /dev/serial/by-id/usb-Silicon_Labs_CP2105_Dual_USB_to_UART_Bridge_Controller_011BD871-if00-port0 -P RIG -s 38400 - << .EOF.
-F 28124600
+F 18104600
 M PKTUSB 2400
 send_raw ; PC005;
 send_raw ; NA01;

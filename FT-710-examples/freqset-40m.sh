@@ -12,9 +12,18 @@ F 7038600
 M PKTUSB 2400
 send_raw ; PC005;
 send_raw ; NA01;
+send_raw ; AC003;
+.EOF.
+# Wait here for 10 seconds
+echo "wait 10 seconds"
+sleep 10
+#
+rigctl -m 1049 -r /dev/serial/by-id/usb-Silicon_Labs_CP2105_Dual_USB_to_UART_Bridge_Controller_011BD871-if00-port0 -P RIG -s 38400 - << .EOF.
 f 
 m 
 send_raw ; PC;
 send_raw ; NA0;
+send_raw ; AC;
+T 0
 t
 .EOF.

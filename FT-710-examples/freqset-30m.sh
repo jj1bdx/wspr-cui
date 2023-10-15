@@ -16,5 +16,6 @@ f
 m 
 send_raw ; PC;
 send_raw ; NA0;
+T 0
 t
 .EOF.
