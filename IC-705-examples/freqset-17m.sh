@@ -1,7 +1,7 @@
 #!/bin/sh
 cd /home/kenji/wspr-trx
 # IC-705
-#  set frequency to 10.1387MHz
+#  set frequency to 18.1046MHz
 #  set mode to USB-D
 #  set filter to 300Hz
 #  set actual output power to 5W (50%)
@@ -9,7 +9,7 @@ cd /home/kenji/wspr-trx
 #  disable transmission (0)
 # then check the status including PTT
 rigctl -m 3085 -r /dev/serial/by-id/usb-Icom_Inc._IC-705_IC-705_31002769-if00 -P RIG -s 19200 - << .EOF.
-F 10138700
+F 18104600
 M PKTUSB 300
 L RFPOWER 0.510
 L PREAMP 0
