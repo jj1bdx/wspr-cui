@@ -1,10 +1,11 @@
 CC = gcc
 FC = gfortran
 
-CFLAGS= -I/usr/local/include -I/usr/include -Wall -Wno-missing-braces -Wno-unused-result -O3 -ffast-math
+# Add homebrew path for macOS
+CFLAGS= -I/opt/homebrew/include -I/usr/local/include -I/usr/include -Wall -Wno-missing-braces -Wno-unused-result -O3 -ffast-math
 #CFLAGS= -I/usr/local/include -I/usr/include -Wall -Wno-missing-braces -Wno-unused-result -O
 # static libgfortran path for macOS
-LDFLAGS = -L/usr/local/lib/gcc/11 -L/usr/local/lib -L/usr/lib
+LDFLAGS = -L/opt/homebrew/lib/gcc/13 -L/opt/homebrew/lib -L/usr/lib
 FFLAGS = -O2 -Wall -Wno-conversion -fbounds-check -fmax-stack-var-size=1048576
 LIBS = -lfftw3f -lm -lgfortran
 
