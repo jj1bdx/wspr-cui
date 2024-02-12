@@ -65,7 +65,7 @@ double volume_sloper(int pos) {
     int newpos = pos - (SIGNALLENGTH - SLOPERATE);
     return raised_cosine((double)newpos / SLOPERATE);
   }
-  if (pos >= SIGNALLENGTH) {
+  if ((pos < 0) || (pos >= SIGNALLENGTH)) {
     return 0.0;
   }
   return 1.0;
