@@ -36,10 +36,40 @@ void usage() {
 }
 
 #define SRATE (48000.0)   // sampling rate = 48000 Hz
-#define TRATE (32768.0)   // symbol length by samples
+#define TRATE (32768)     // symbol length by samples
 #define NSYM (162)        // number of symbols for each transmission
 #define SYMSIZE (5376000) // 112 seconds for 48000 samples/second
 #define FOFFSET (1500.0)  // center frequency for audio signal
+
+// slope rate for 20 milliseconds by samples
+#define SLOPERATE (0.02 * SRATE)
+// signal length in samples
+#define SIGNALLENGTH (TRATE * NSYM)
+
+// Calculate Raised Cosine slope
+double raised_cosine(double x) {
+  if ((x <= -1.0) || (x >= 1.0)) {
+    return 0;
+  }
+  return (0.5 * (1.0 + cos(M_PI * x)));
+}
+
+// Audio volume envelope generator
+// to fade in/out with raised-cosine envelopes
+// (see https://github.com/jj1bdx/wspr-cui/issues/5 for the details)
+double volume_sloper(int pos) {
+  if ((0 <= pos) && (pos < SLOPERATE)) {
+    return raised_cosine(1.0 - ((double)pos / SLOPERATE));
+  }
+  if (((SIGNALLENGTH - SLOPERATE) <= pos) && (pos < SIGNALLENGTH)) {
+    int newpos = pos - (SIGNALLENGTH - SLOPERATE);
+    return raised_cosine((double)newpos / SLOPERATE);
+  }
+  if (pos >= SIGNALLENGTH) {
+    return 0.0;
+  }
+  return 1.0;
+}
 
 void add_signal_vector(double f0, double amp, unsigned char *symbols,
                        double sig[]) {
@@ -47,14 +77,14 @@ void add_signal_vector(double f0, double amp, unsigned char *symbols,
   double phi = 0.0, twopidt, df, dphi;
 
   twopidt = 8.0 * atan(1.0) / SRATE; // 2 * PI / SRATE
-  df = SRATE / TRATE;
+  df = SRATE / (double)TRATE;
   idelay = SRATE; // 1.0 second delay
 
   for (i = 0; i < NSYM; i++) {
     dphi = twopidt * (FOFFSET + f0 + (((double)symbols[i] - 1.5) * df));
     for (j = 0; j < TRATE; j++) {
       ii = idelay + (TRATE * i) + j;
-      sig[ii] = sin(phi) * amp;
+      sig[ii] = sin(phi) * amp * volume_sloper(ii - idelay);
       phi = phi + dphi;
     }
   }
